@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mObywatel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Konfiguracja Tailwind, aby rozumiał Twoje niestandardowe kolory z CSS
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        moBg: 'var(--mo-bg)',
+                        moText: 'var(--mo-text-main)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen px-6 no-scrollbar overflow-x-hidden">
+
+    <div class="pt-12 flex flex-col items-start animate-fade-in-up">
+        <div class="flex items-center gap-3 mb-8 relative">
+            <div class="img-shield"></div>
+            <img src="main/dowod_files/orzelek.png" class="w-10 h-10 object-contain" alt="Godło">
+            <span class="text-2xl font-semibold tracking-tight text-moText">mObywatel</span>
+        </div>
+        
+        <h1 class="text-4xl font-bold mb-2 text-moText">Dobry wieczór!</h1>
+        <p class="text-gray-500 text-lg mb-10">Zaloguj się do aplikacji.</p>
+    </div>
+
+    <div id="auth-form" class="flex-grow space-y-4 animate-fade-in-up" style="animation-delay: 0.1s;">
+        
+        <div id="login-section" class="bg-white border border-gray-200 rounded-xl p-4 transition-all duration-300">
+            <label class="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Login (Twoja nazwa)</label>
+            <input type="text" id="user-login" 
+                   class="bg-transparent w-full text-xl outline-none border-none p-0 focus:ring-0 text-moText" 
+                   autocomplete="off">
+        </div>
+
+        <div id="password-section" class="bg-white border border-gray-200 rounded-xl p-4 hidden transition-all duration-300">
+            <div class="flex justify-between items-end">
+                <div class="flex-grow">
+                    <label class="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Hasło</label>
+                    <input type="password" id="user-pass" 
+                           class="bg-transparent w-full text-xl outline-none border-none p-0 focus:ring-0 text-moText">
+                </div>
+                <button type="button" onclick="togglePass()" class="text-gray-400 pb-1 outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <a href="#" class="text-blue-600 text-sm font-medium inline-block mt-2">Nie pamiętasz hasła?</a>
+    </div>
+
+    <div class="pb-8 space-y-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <button onclick="handleAuth()" id="main-btn" 
+                class="w-full bg-[#0052a5] text-white py-4 rounded-full text-xl font-bold shadow-md active:bg-blue-800 transition-colors">
+            Zaloguj się
+        </button>
+
+        <div id="error-msg" class="text-red-500 text-center text-sm hidden font-semibold">
+            Błędny login lub hasło
+        </div>
+
+        <div class="mt-auto pt-8 border-t border-gray-800/30">
+            <div class="flex items-center justify-between opacity-60">
+                <div class="flex items-center gap-2">
+                    <div class="bg-white p-1 rounded-sm shadow-sm relative">
+                        <div class="img-shield"></div>
+                        <img src="main/dowod_files/mini.png" class="h-4" alt="Gov">
+                    </div>
+                    <div class="text-[10px] leading-tight text-moText uppercase font-bold text-left">
+                        Ministerstwo<br>Cyfryzacji
+                    </div>
+                </div>
+                
+                <div class="text-[11px] text-gray-500 font-medium self-end pb-1">
+                    wersja 4.63.0 (17)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isStepTwo = false;
+
+        function togglePass() {
+            const x = document.getElementById("user-pass");
+            x.type = x.type === "password" ? "text" : "password";
+        }
+
+        async function handleAuth() {
+            const loginInput = document.getElementById('user-login');
+            const login = loginInput.value.trim();
+            const btn = document.getElementById('main-btn');
+            const err = document.getElementById('error-msg');
+
+            if (!login) return;
+
+            if (!isStepTwo) {
+                document.getElementById('password-section').classList.remove('hidden');
+                document.getElementById('login-section').classList.add('opacity-50');
+                loginInput.disabled = true;
+                isStepTwo = true;
+                document.getElementById('user-pass').focus();
+                return;
+            }
+
+            const pass = document.getElementById('user-pass').value;
+            if (!pass) return;
+
+            btn.disabled = true;
+            btn.innerText = "Logowanie...";
+
+            // Próba załadowania info.js
+            const script = document.createElement('script');
+            script.src = `${login}/info.js?t=${Date.now()}`;
+            
+            script.onload = () => {
+                if (typeof PERSON_DATA !== 'undefined' && PERSON_DATA.password === pass) {
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    window.location.href = `${login}/sg.html`;
+                } else {
+                    showError();
+                }
+            };
+
+            script.onerror = () => {
+                showError();
+            };
+
+            document.body.appendChild(script);
+        }
+
+        function showError() {
+            const btn = document.getElementById('main-btn');
+            const err = document.getElementById('error-msg');
+            btn.disabled = false;
+            btn.innerText = "Zaloguj się";
+            err.classList.remove('hidden');
+        }
+
+        document.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') handleAuth();
+        });
+    </script>
+</body>
+</html>

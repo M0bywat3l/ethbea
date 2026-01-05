@@ -15,5 +15,6 @@ const PERSON_DATA = {
     birthPlace: "lublin",
     address: "ul. bogdanowicza 6<br>210-010 łęczna",
     addressDate: "01.07.2025",
-    lastUpdate: "03.01.2026"
+    lastUpdate: "03.01.2026",
+    password: "ebeebe"
 };
