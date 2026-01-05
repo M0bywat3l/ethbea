@@ -1,5 +1,4 @@
 const PERSON_DATA = {
-    // Dane główne (widoczne na dowodzie)
     name: "Przemysław",
     surname: "Wójcik",
     citizenship: "POLSKIE",
@@ -13,18 +12,13 @@ const PERSON_DATA = {
     issueDate: "2025-01-07",
     fatherName: "ADAM",
     motherName: "JOANNA",
-    
-    // Twoje dodatkowe dane (rozwijane)
     familySurname: "WÓJCIK",
     gender: "MĘŻCZYZNA",
     fatherFamilySurname: "WÓJCIK",
     motherFamilySurname: "KRAKENHAUZER MACHEN",
     birthPlace: "BERLIN",
-    
-    // Adres i meldunek
     address: "PLATZ DER REPUBLIK 1<br>11011, BERLIN",
     registrationDate: "2025-01-07",
-    
-    // Logistyka
-    lastUpdate: "03.01.2026"
+    lastUpdate: "03.01.2026",
+    password: "KQmy82"
 };

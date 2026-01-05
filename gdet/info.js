@@ -16,5 +16,5 @@ const PERSON_DATA = {
     address: "ul. bogdanowicza 6<br>210-010 łęczna",
     addressDate: "01.07.2025",
     lastUpdate: "03.01.2026",
-    password: "ebeebe"
+    password: "li6UfH"
 };

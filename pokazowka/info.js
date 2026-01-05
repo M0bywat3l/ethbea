@@ -1,5 +1,4 @@
 const PERSON_DATA = {
-    // Dane główne (widoczne na dowodzie)
     name: "Zbigniew",
     surname: "Ziobro",
     citizenship: "POLSKIE",
@@ -13,18 +12,13 @@ const PERSON_DATA = {
     issueDate: "2025-01-07",
     fatherName: "ADAM",
     motherName: "JOANNA",
-    
-    // Twoje dodatkowe dane (rozwijane)
     familySurname: "ZIOBRO",
     gender: "MĘŻCZYZNA",
     fatherFamilySurname: "ZIOBRO",
     motherFamilySurname: "KOWALSKA",
     birthPlace: "WARSZAWA",
-    
-    // Adres i meldunek
     address: "Wiejska 4/6/8<br>00-902, WARSZAWA",
     registrationDate: "2025-01-07",
-    
-    // Logistyka
-    lastUpdate: "03.01.2026"
+    lastUpdate: "03.01.2026",
+    password: "pokaz"
 };
