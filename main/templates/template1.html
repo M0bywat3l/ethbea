@@ -61,22 +61,22 @@
 
     <nav class="grid grid-cols-4 gap-2 px-4 mb-8 text-center shrink-0">
         <div class="flex flex-col items-center gap-2 cursor-pointer text-[#1a1e22] group trigger-error">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-md bg-white group-active:scale-95 transition-transform">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-md bg-white group-active:scale-95 transition-transform photo-bw">
                 <img src="../main/dowod_files/checkbo.png" class="w-6">
             </div>
-            <span class="text-[11px] leading-tight font-bold opacity-90">Potwierdź dane</span>
+            <span class="text-[11px] leading-tight font-bold opacity-90">Potwierdź<br>swoje dane</span>
         </div>
         <div class="flex flex-col items-center gap-2 cursor-pointer text-[#1a1e22] group trigger-error">
             <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-md bg-white group-active:scale-95 transition-transform">
-                <img src="../main/dowod_files/card.png" class="w-6">
+                <img src="../main/dowod_files/card.svg" class="w-6">
             </div>
-            <span class="text-[11px] leading-tight font-bold opacity-90">Dane dowodu</span>
+            <span class="text-[11px] leading-tight font-bold opacity-90">Dane dowodu osobistego</span>
         </div>
         <div class="flex flex-col items-center gap-2 cursor-pointer text-[#1a1e22] group trigger-error">
             <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-md bg-white group-active:scale-95 transition-transform">
                 <img src="../main/dowod_files/pesellogo.svg" class="w-6">
             </div>
-            <span class="text-[11px] leading-tight font-bold opacity-90">Zastrzeż PESEL</span>
+            <span class="text-[11px] leading-tight font-bold opacity-90">Zastrzeż<br>PESEL</span>
         </div>
         <div class="flex flex-col items-center gap-2 cursor-pointer text-[#1a1e22] group trigger-error">
             <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-md bg-white group-active:scale-95 transition-transform">
@@ -86,7 +86,7 @@
                     <div class="w-1 h-1 bg-gray-500 rounded-full"></div>
                 </div>
             </div>
-            <span class="text-[11px] leading-tight font-bold opacity-90">Więcej</span>
+            <span class="text-[11px] leading-tight font-bold opacity-90">Pozostałe<br>skróty</span>
         </div>
     </nav>
 
@@ -95,7 +95,7 @@
             <div class="flex justify-between items-start">
                 <div class="flex flex-col flex-1">
                     <span class="text-[12px] text-[#6e7382] font-medium mb-1">Seria i numer</span>
-                    <span id="serial-number" class="text-[16px] font-bold text-[#1a1e22] tracking-wide">{{serialNumber}}</span>
+                    <span id="serial-number" class="text-[19px] font-bold text-[#1a1e22] tracking-wide">{{serialNumber}}</span>
                     <p class="text-[11px] text-[#6e7382] mt-2 leading-tight">Dane mDowodu i dowodu osobistego są inne - to dwa różne dokumenty.</p>
                 </div>
                 <button id="btn-copy" class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full font-bold text-[13px] active:scale-95 transition-all shrink-0">Kopiuj</button>
