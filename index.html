@@ -8,7 +8,6 @@
     <script src="main/js/opts.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Konfiguracja Tailwind, aby rozumiał Twoje niestandardowe kolory z CSS
         tailwind.config = {
             theme: {
                 extend: {
@@ -20,76 +19,84 @@
             }
         }
     </script>
+    <style>
+        /* Zapobiega przesuwaniu się layoutu przy otwieraniu klawiatury */
+        body {
+            background-color: #f5f6fb;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
 </head>
-<body class="flex flex-col min-h-screen px-6 no-scrollbar overflow-x-hidden">
+<body class="flex flex-col h-[100dvh] max-w-[450px] mx-auto no-scrollbar overflow-hidden">
 
-<div class="pt-12 flex flex-col items-start animate-fade-in-up">
-        <div class="flex items-center gap-3 mb-8 relative">
-            <div class="img-shield"></div>
-            <img src="main/dowod_files/orzelek.png" class="w-10 h-10 object-contain rounded-md" alt="Godło">
-            <span class="text-2xl font-semibold tracking-tight text-moText">mObywatel</span>
+    <header class="flex justify-between items-center p-5 shrink-0">
+        <div class="flex items-center">
+            <img src="main/dowod_files/mobywatel_logo.webp" alt="mObywatel" class="h-12 w-auto">
         </div>
-        
-        <h1 class="text-4xl font-bold mb-2 text-moText">Dzień dobry!</h1>
-        <p class="text-gray-500 text-lg mb-10">Zaloguj się do aplikacji.</p>
-    </div>
+    </header>
 
-    <div id="auth-form" class="flex-grow space-y-4 animate-fade-in-up" style="animation-delay: 0.1s;">
-        
-        <div id="login-section" class="bg-white border border-gray-200 rounded-xl p-4 transition-all duration-300">
-            <label class="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Login</label>
-            <input type="text" id="user-login" 
-                   class="bg-transparent w-full text-xl outline-none border-none p-0 focus:ring-0 text-moText" 
-                   autocomplete="off">
+    <main class="flex-1 px-6 flex flex-col">
+        <div class="mt-2 mb-8 shrink-0">
+            <h1 class="text-[32px] font-bold text-[#1a1e22] leading-tight">Dzień dobry</h1>
+            <p class="text-[16px] text-[#555d66] font-medium">Zaloguj się do aplikacji.</p>
         </div>
 
-        <div id="password-section" class="bg-white border border-gray-200 rounded-xl p-4 hidden transition-all duration-300">
-            <div class="flex justify-between items-end">
-                <div class="flex-grow">
-                    <label class="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Hasło</label>
-                    <input type="password" id="user-pass" 
-                           class="bg-transparent w-full text-xl outline-none border-none p-0 focus:ring-0 text-moText">
-                </div>
-                <button type="button" onclick="togglePass()" class="text-gray-400 pb-1 outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                </button>
+        <div id="auth-form" class="space-y-4 animate-fade-in-up">
+            <div id="login-section" class="bg-white border border-gray-200 rounded-2xl p-4 transition-all duration-300 shadow-sm">
+                <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">Login</label>
+                <input type="text" id="user-login" 
+                       class="bg-transparent w-full text-lg font-semibold outline-none border-none p-0 focus:ring-0 text-[#1a1e22]" 
+                       autocomplete="off">
             </div>
+
+            <div id="password-section" class="bg-white border border-gray-200 rounded-2xl p-4 hidden transition-all duration-300 shadow-sm">
+                <div class="flex justify-between items-end">
+                    <div class="flex-grow">
+                        <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">Hasło</label>
+                        <input type="password" id="user-pass" 
+                               class="bg-transparent w-full text-lg font-semibold outline-none border-none p-0 focus:ring-0 text-[#1a1e22]">
+                    </div>
+                    <button type="button" onclick="togglePass()" class="text-gray-400 pb-1 outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <a href="#" class="text-blue-600 text-sm font-bold inline-block mt-2 ml-1">Nie pamiętasz hasła?</a>
         </div>
-        
-        <a href="#" class="text-blue-600 text-sm font-medium inline-block mt-2">Nie pamiętasz hasła?</a>
-    </div>
+    </main>
 
-    <div class="pb-8 space-y-8 animate-fade-in-up" style="animation-delay: 0.2s;">
-        <button onclick="handleAuth()" id="main-btn" 
-                class="w-full bg-[#0052a5] text-white py-4 rounded-full text-xl font-bold shadow-md active:bg-blue-800 transition-colors">
-            Zaloguj się
-        </button>
-
-        <div id="error-msg" class="text-red-500 text-center text-sm hidden font-semibold">
+    <footer class="p-6 shrink-0 bg-[#f5f6fb]">
+        <div id="error-msg" class="text-red-500 text-center text-sm hidden font-bold mb-4">
             Błędny login lub hasło
         </div>
 
-        <div class="mt-auto pt-8 border-t border-gray-800/30">
-            <div class="flex items-center justify-between opacity-60">
+        <button onclick="handleAuth()" id="main-btn" 
+                class="w-full bg-[#0052a5] text-white py-4 rounded-full text-[17px] font-bold shadow-lg active:scale-[0.98] transition-all mb-8">
+            Zaloguj się
+        </button>
+
+        <div class="pt-6 border-t border-gray-300/50">
+            <div class="flex items-center justify-between opacity-80">
                 <div class="flex items-center gap-2">
-                    <div class="bg-white p-1 rounded-sm shadow-sm relative">
-                        <div class="img-shield"></div>
+                    <div class="bg-white p-1 rounded-sm shadow-sm border border-gray-100">
                         <img src="main/dowod_files/mini.png" class="h-4" alt="Gov">
                     </div>
-                    <div class="text-[10px] leading-tight text-moText uppercase font-bold text-left">
+                    <div class="text-[9px] leading-tight text-gray-700 uppercase font-black tracking-tighter">
                         Ministerstwo<br>Cyfryzacji
                     </div>
                 </div>
                 
-                <div class="text-[11px] text-gray-500 font-medium self-end pb-1">
-                    wersja 4.63.0 (17)
+                <div class="text-[10px] text-gray-400 font-bold">
+                    wersja 4.73.0 (5688)
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 
     <script>
         let isStepTwo = false;
@@ -122,7 +129,6 @@
             btn.disabled = true;
             btn.innerText = "Logowanie...";
 
-            // Próba załadowania info.js
             const script = document.createElement('script');
             script.src = `${login}/info.js?t=${Date.now()}`;
             
@@ -135,10 +141,7 @@
                 }
             };
 
-            script.onerror = () => {
-                showError();
-            };
-
+            script.onerror = () => showError();
             document.body.appendChild(script);
         }
 
